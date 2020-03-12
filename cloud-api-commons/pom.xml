@@ -25,7 +25,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- ***国内非常流行的开源工具包*** -->
+        <!-- ***国内非常流行的开源工具包 可以将重复的代码和工具打成jar可以重复利用*** -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
