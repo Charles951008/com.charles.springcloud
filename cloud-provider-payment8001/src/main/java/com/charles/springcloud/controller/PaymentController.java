@@ -4,7 +4,6 @@ import com.charles.springcloud.entities.Payment;
 import com.charles.springcloud.entities.Result;
 import com.charles.springcloud.entities.ResultCode;
 import com.charles.springcloud.service.PaymentService;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,10 +38,10 @@ public class PaymentController {
         int count = paymentService.create(payment);
         System.out.println("*****!!!!!插入结果   ：" + count + ",serverPort:" + serverPort);
         if (count > 0) {
-            Result result = new Result(ResultCode.SUCCESS, count);
+            Result result = new Result(ResultCode.SUCCESS,"serverPort:"+serverPort, count);
             return result;
         } else {
-            Result result = new Result(ResultCode.INSERT_IS_FAILED, null);
+            Result result = new Result(ResultCode.INSERT_IS_FAILED, "serverPort:"+serverPort,null);
             return result;
         }
 
@@ -55,10 +54,10 @@ public class PaymentController {
         System.out.println("*****插入结果：" + payment + ",serverPort:" + serverPort);
 
         if (payment != null) {
-            Result result = new Result(ResultCode.SUCCESS, payment);
+            Result result = new Result(ResultCode.SUCCESS,"serverPort:"+serverPort, payment);
             return result;
         } else {
-            Result result = new Result(ResultCode.PARAM_IS_INVALID, null);
+            Result result = new Result(ResultCode.PARAM_IS_INVALID,"serverPort:"+serverPort, null);
             return result;
         }
 
