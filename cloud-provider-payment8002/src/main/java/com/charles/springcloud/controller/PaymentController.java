@@ -28,7 +28,7 @@ public class PaymentController {
     public Result create(@RequestBody Payment payment){
 
         int count = paymentService.create(payment);
-        System.out.println("*****!!!!!插入结果   ："+count+",serverPort:"+serverPort);
+        System.out.println("*****!!!!!插入结果："+count+",serverPort:"+serverPort);
         if(count>0){
             Result result=new Result(ResultCode.SUCCESS,count);
             return result;
