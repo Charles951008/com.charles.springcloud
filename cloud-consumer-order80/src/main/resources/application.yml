@@ -11,6 +11,10 @@ spring:
   application:
     name: cloud-order-service
 
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+
 eureka:
   instance:
     hostname: localhost #eureka服务端的实例名称

@@ -5,15 +5,22 @@ import com.charles.springcloud.entities.Result;
 import com.charles.springcloud.entities.ResultCode;
 import com.charles.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author Charles
  */
 @RestController
-@Slf4j
 public class PaymentController {
+    private static final Logger log = LoggerFactory.getLogger(PaymentController.class);
 
     private final PaymentService paymentService;
 
@@ -23,6 +30,9 @@ public class PaymentController {
 
     @Value("${server.port}")
     private String serverPort;
+
+    @Resource
+    private DiscoveryClient discoveryClient;
 
     @PostMapping(value = "/payment/create")
     public Result create(@RequestBody Payment payment){
@@ -53,5 +63,19 @@ public class PaymentController {
             return result;
         }
 
+    }
+
+    @GetMapping(value = "/payment/discovery")
+    public Object discovery(){
+        List<String> services=discoveryClient.getServices();
+        for(String element: services){
+            log.info("*****element:"+element);
+        }
+
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        for(ServiceInstance instance:instances){
+            log.info(instance.getInstanceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());
+        }
+        return this.discoveryClient;
     }
 }

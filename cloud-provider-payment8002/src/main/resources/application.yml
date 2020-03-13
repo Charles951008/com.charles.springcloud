@@ -25,6 +25,8 @@ mybatis:
 eureka:
   instance:
     hostname: localhost #eureka服务端的实例名称
+    instance-id: payment8002
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry: true
