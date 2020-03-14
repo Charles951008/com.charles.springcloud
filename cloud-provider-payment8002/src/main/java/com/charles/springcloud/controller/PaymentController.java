@@ -58,7 +58,7 @@ public class PaymentController {
             Result result = new Result(ResultCode.SUCCESS, "serverPort:"+serverPort,payment);
             return result;
         } else {
-            Result result = new Result(ResultCode.PARAM_IS_INVALID,"serverPort:"+serverPort, null);
+            Result result = new Result(ResultCode.SEARCH_NOTHING,"serverPort:"+serverPort, null);
             return result;
         }
 

@@ -23,6 +23,8 @@ public enum ResultCode {
 
     /* 失败状态码 */
     PARAM_IS_INVALID(1001, "参数无效"),
+    FALSE_TO_OPERATE(444,"操作失败"),
+    SEARCH_NOTHING(404,"查无数据"),
     INSERT_IS_FAILED(1002,"插入数据库失败");
 
     private Integer code;
