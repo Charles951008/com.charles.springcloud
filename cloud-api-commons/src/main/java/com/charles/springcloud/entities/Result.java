@@ -25,6 +25,12 @@ public class Result implements Serializable {
         this.data = data;
     }
 
+    /**
+     * @description 带有eureka标识的状态码
+     * @param resultCode 状态码
+     * @param source eureka标识
+     * @param data 返回的结果集
+     */
     public Result(ResultCode resultCode, String source, Object data) {
         this.code = resultCode.code();
         this.message = resultCode.message();
