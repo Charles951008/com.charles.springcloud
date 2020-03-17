@@ -6,7 +6,7 @@
 
     <insert id="create" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
 
-        insert into charles(serial) value(#{serial})
+        insert into test_cloud(serial) value(#{serial})
 
     </insert>
 
@@ -17,7 +17,7 @@
 
     <select id="getPaymentById" parameterType="Long" resultMap="BaseResultMap">
 
-        select * from charles where id=#{id}
+        select * from test_cloud where id=#{id}
 
     </select>
 
